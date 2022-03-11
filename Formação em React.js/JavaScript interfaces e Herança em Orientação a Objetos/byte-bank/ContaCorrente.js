@@ -2,10 +2,7 @@ import { Cliente } from "./Cliente.js";
 
 export class ContaCorrente{
     static numeroDeContas = 0;
-    agencia;
-    _cliente;
     //#saldo = 0 (ainda não é convencional) https://github.com/tc39/proposal-class-fields#private-fields
-    _saldo = 0;
 
 
     set cliente(novoValor){
@@ -26,9 +23,9 @@ export class ContaCorrente{
     constructor(cliente, agencia){
         this.agencia = agencia;
         this.cliente = cliente;
+        this._saldo = 0;
         ContaCorrente.numeroDeContas += 1;
     }
-    
 
     sacar(valor){
         if(this._saldo >= valor){
@@ -46,4 +43,5 @@ export class ContaCorrente{
         const valorSacado = this.sacar(valor);
         conta.depositar(valorSacado);
     }
+    
 }
